@@ -107,14 +107,6 @@
             min-height: 0;
         }
 
-        .panel-small {
-            flex: 0.8 !important;
-        }
-
-        .panel-large {
-            flex: 2.5 !important;
-        }
-
         .panel-header {
             padding: 0.6rem 1rem;
             background: rgba(255, 255, 255, 0.05);
@@ -230,11 +222,11 @@
         </div>
 
         <div class="col-stack">
-            <div class="panel panel-small">
+            <div class="panel" style="flex: 1.2;">
                 <div class="panel-header">Glossary</div>
                 <div class="content-area" id="glossary-content"></div>
             </div>
-            <div class="panel panel-large">
+            <div class="panel" style="flex: 2.5;">
                 <div class="panel-header">Tips</div>
                 <div class="content-area">
                     <ul class="tips-list" id="tips-content"></ul>
