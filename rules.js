@@ -3,7 +3,7 @@ const ruleData = {
 
     general: [
         "**RDM**: You cannot kill without a valid RP reason.",
-        "**NLR**: New Life Rule is **5 Minutes**. Do not return.",
+        "**NLR**: New Life Rule is **5 Minutes**. Do not return to the same area after death.",
         "**FearRP**: Comply if 1+ person has you at gunpoint while unarmed, or if you are jumped from behind.",
         "**Metagaming**: No OOC info for In-Character gain.",
         "**Prop Abuse**: No prop climbing, surfing, or killing.",
@@ -39,7 +39,7 @@ const ruleData = {
 
     glossary: [
         { t: "RDM", d: "Random Deathmatch" },
-        { t: "NLR", d: "New Life Rule - forget your past life" },
+        { t: "NLR", d: "New Life Rule - forget your past life on death" },
         { t: "RDA", d: "Random Arrest" },
         { t: "OOC", d: "Out Of Character" },
         { t: "FearRP", d: "Fear Roleplay - fear for your life" },
