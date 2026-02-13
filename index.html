@@ -236,13 +236,6 @@
     </div>
 
     <script>
-    // Forces the browser to load the latest rules.js by adding a timestamp
-    const script = document.createElement('script');
-    script.src = 'rules.js?v=' + new Date().getTime();
-    document.body.appendChild(script);
-    </script>
-
-    <script>
         function renderList(id, items) {
             const ul = document.getElementById(id);
             if(!ul || !items) return;
@@ -253,30 +246,43 @@
             });
         }
 
-        if (typeof ruleData !== 'undefined') {
-            renderList('general-content', ruleData.general);
-            renderList('building-content', ruleData.building);
-            renderList('jobs-content', ruleData.jobs);
-            renderList('raiding-content', ruleData.raiding);
-            
-            const tipsUl = document.getElementById('tips-content');
-            if (ruleData.tips) {
-                ruleData.tips.forEach(txt => {
-                    const li = document.createElement('li');
-                    li.innerHTML = txt;
-                    tipsUl.appendChild(li);
-                });
-            }
+        async function initializePage() {
+            if (typeof ruleData !== 'undefined') {
+                renderList('general-content', ruleData.general);
+                renderList('building-content', ruleData.building);
+                renderList('jobs-content', ruleData.jobs);
+                renderList('raiding-content', ruleData.raiding);
+                
+                const tipsUl = document.getElementById('tips-content');
+                if (ruleData.tips && tipsUl) {
+                    ruleData.tips.forEach(txt => {
+                        const li = document.createElement('li');
+                        li.innerHTML = txt;
+                        tipsUl.appendChild(li);
+                    });
+                }
 
-            const glosDiv = document.getElementById('glossary-content');
-            if (ruleData.glossary) {
-                ruleData.glossary.forEach(g => {
-                    glosDiv.innerHTML += `
-                        <div class="glossary-row">
-                            <span class="g-term">${g.t}</span>
-                            <span class="g-def">${g.d}</span>
-                        </div>`;
-                });
+                const glosDiv = document.getElementById('glossary-content');
+                if (ruleData.glossary && glosDiv) {
+                    ruleData.glossary.forEach(g => {
+                        glosDiv.innerHTML += `
+                            <div class="glossary-row">
+                                <span class="g-term">${g.t}</span>
+                                <span class="g-def">${g.d}</span>
+                            </div>`;
+                    });
+                }
+                
+                const el = document.getElementById('date-display');
+                if (ruleData.manualDate) {
+                    try {
+                        const r = await fetch('https://api.github.com/repos/tfsau/tfsau-rules/commits?path=index.html&page=1&per_page=1');
+                        if(r.ok) {
+                            const d = await r.json();
+                            el.textContent = "Updated: " + new Date(d[0].commit.committer.date).toLocaleDateString('en-GB');
+                        } else { throw new Error(); }
+                    } catch { el.textContent = "Updated: " + ruleData.manualDate; }
+                }
             }
         }
 
@@ -286,22 +292,12 @@
             document.getElementById('rotator-group').classList.add('spin-active');
         }
 
-        const GITHUB_USER = "tfsau";
-        const GITHUB_REPO = "tfsau-rules";
-        
-        async function setDate() {
-            const el = document.getElementById('date-display');
-            if (typeof ruleData !== 'undefined' && ruleData.manualDate) {
-                try {
-                    const r = await fetch(`https://api.github.com/repos/${GITHUB_USER}/${GITHUB_REPO}/commits?path=index.html&page=1&per_page=1`);
-                    if(r.ok) {
-                        const d = await r.json();
-                        el.textContent = "Updated: " + new Date(d[0].commit.committer.date).toLocaleDateString('en-GB');
-                    } else { throw new Error(); }
-                } catch { el.textContent = "Updated: " + ruleData.manualDate; }
-            }
-        }
-        setDate();
+        const script = document.createElement('script');
+        script.src = 'rules.js?v=' + new Date().getTime();
+        script.onload = function() {
+            initializePage();
+        };
+        document.body.appendChild(script);
     </script>
 </body>
 </html>
