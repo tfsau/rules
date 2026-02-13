@@ -51,6 +51,8 @@ const ruleData = {
         "Type // for OOC chat.",
         "Type /advert to broadcast messages.",
         "Type /aadvert to broadcast anonymous messages.",
-        "Printers explode if they run out of coolant. Watch them."
+        "Printers explode if they run out of coolant. Watch them.",
+        "Place hits by interacting with the phone booth, they will ring when there is an incoming hit, hitmen & Mob Boss can answer the phone to accept",
+        "Don't forget to vote on the map for the week by interacting with the polling booth at spawn."
     ]
 };
