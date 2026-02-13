@@ -235,7 +235,12 @@
         </div>
     </div>
 
-    <script src="rules.js"></script>
+    <script>
+    // Forces the browser to load the latest rules.js by adding a timestamp
+    const script = document.createElement('script');
+    script.src = 'rules.js?v=' + new Date().getTime();
+    document.body.appendChild(script);
+    </script>
 
     <script>
         function renderList(id, items) {
