@@ -2,12 +2,13 @@ const ruleData = {
     manualDate: "13/02/2026",
 
     general: [
+        "**Please set a valid, realistic RPName with /name, e.g. /name John Smith**",
         "**RDM**: You cannot kill without a valid RP reason.",
-        "**NLR**: New Life Rule is **5 Minutes**. Do not return to the same area after death.",
+        "**NLR**: Forget everything on death, you are a new person. You cannot return to the same until **5 minutes** after death.",
         "**FearRP**: Comply if 1+ person has you at gunpoint while unarmed, or if you are jumped from behind.",
         "**Metagaming**: No OOC info for In-Character gain.",
-        "**Prop Abuse**: No prop climbing, surfing, or killing.",
-        "**Respect**: No toxicity or discrimination.",
+        "**Prop Abuse**: No prop climbing, spamming, surfing, or killing.",
+        "**Respect**: No OOC toxicity or discrimination.",
         "**Common Sense**: Always applies, use it."
     ],
 
@@ -22,6 +23,7 @@ const ruleData = {
 
     jobs: [
         "**Civil Protection**: Arrest with a valid reason. Raid with a valid warrant.",
+        "**Security Guard**: You can work for anybody, but you cannot raid or arrest people."
         "**Gun Dealer (GD)**: Must sell to public.",
         "**Black Market Dealer (BMD)**: **YOU ARE ALWAYS ILLEGAL**. You may be arrested on sight. Must sell to public.",
         "**Medic**: Heal everyone. Do not pocket combat classes.",
