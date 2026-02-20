@@ -23,7 +23,7 @@ const ruleData = {
 
     jobs: [
         "**Civil Protection**: Arrest with a valid reason. Raid with a valid warrant.",
-        "**Security Guard**: You can work for anybody, but you cannot raid or arrest people."
+        "**Security Guard**: You can work for anybody, but you cannot raid or arrest people.",
         "**Gun Dealer (GD)**: Must sell to public.",
         "**Black Market Dealer (BMD)**: **YOU ARE ALWAYS ILLEGAL**. You may be arrested on sight. Must sell to public.",
         "**Medic**: Heal everyone. Do not pocket combat classes.",
